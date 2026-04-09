@@ -1,0 +1,80 @@
+--- a/dist/monitor-CcQ_3z5A.js
++++ b/dist/monitor-CcQ_3z5A.js
+@@ -365,6 +365,61 @@
+ 	if (trimmed.startsWith("on_")) return "union_id";
+ 	return "user_id";
+ }
++// Dynamic group member name cache: chatId -> { open_id -> name }
++const groupMemberNameCache = new Map();
++const GROUP_MEMBER_CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
++// Fetch and cache group members for a chat
++async function fetchGroupMembers(params) {
++	const { client, chatId, log } = params;
++	const cached = groupMemberNameCache.get(chatId);
++	const now = Date.now();
++	if (cached && cached.expireAt > now) {
++		return cached.members;
++	}
++	try {
++		const members = new Map();
++		let pageToken;
++		do {
++			const response = await client.im.chatMembers.get({
++				path: { chat_id: chatId },
++				params: { member_id_type: "open_id", page_size: 100, page_token: pageToken }
++			});
++			const items = response.data?.items ?? [];
++			for (const item of items) {
++				if (item.member_id && item.name) {
++					members.set(item.member_id, item.name);
++				}
++			}
++			pageToken = response.data?.page_token;
++		} while (pageToken);
++		groupMemberNameCache.set(chatId, { members, expireAt: now + GROUP_MEMBER_CACHE_TTL_MS });
++		log(`feishu: cached ${members.size} members for chat ${chatId}`);
++		return members;
++	} catch (err) {
++		log(`feishu: failed to fetch members for chat ${chatId}: ${String(err)}`);
++		return cached?.members ?? new Map();
++	}
++}
++// Find sender name from group member cache
++function findSenderNameInGroupCache(senderId, chatId) {
++	const cached = groupMemberNameCache.get(chatId);
++	if (cached?.members) {
++		return cached.members.get(senderId);
++	}
++	return undefined;
++}
+ async function resolveFeishuSenderName(params) {
+-	const { account, senderId, log } = params;
++	const { account, senderId, chatId, log } = params;
+ 	if (!account.configured) return {};
+ 	const normalizedSenderId = senderId.trim();
+ 	if (!normalizedSenderId) return {};
++	// First, try to find in group member cache (most reliable for cross-app open_ids)
++	if (chatId) {
++		const groupMemberName = findSenderNameInGroupCache(normalizedSenderId, chatId);
++		if (groupMemberName) {
++			return { name: groupMemberName };
++		}
++	}
+@@ -1597,6 +1652,12 @@
+ 	}
+ 	let permissionErrorForAgent;
++	// For group messages, prefetch group members to build name cache
++	if (isGroup && ctx.chatId && (feishuCfg?.resolveSenderNames ?? true)) {
++		await fetchGroupMembers({
++			client: createFeishuClient(account),
++			chatId: ctx.chatId,
++			log
++		});
++	}
+ 	if (feishuCfg?.resolveSenderNames ?? true) {
+ 		const senderResult = await resolveFeishuSenderName({
+ 			account,
+ 			senderId: ctx.senderOpenId,
++			chatId: ctx.chatId,
+ 			log
+ 		});
