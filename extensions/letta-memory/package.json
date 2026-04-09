@@ -1,0 +1,13 @@
+{
+  "name": "letta-memory",
+  "version": "1.0.0",
+  "description": "Letta memory integration for OpenClaw agents",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@letta-ai/letta-client": "latest"
+  }
+}

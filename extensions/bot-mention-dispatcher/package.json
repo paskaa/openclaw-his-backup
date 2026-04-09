@@ -1,0 +1,21 @@
+{
+  "name": "bot-mention-dispatcher",
+  "version": "1.0.0",
+  "description": "OpenClaw plugin to dispatch mentions between bot agents",
+  "main": "index.js",
+  "scripts": {
+    "test": "node -e \"const h = require('./index'); console.log('Plugin loaded:', typeof h);\""
+  },
+  "keywords": [
+    "openclaw",
+    "plugin",
+    "feishu",
+    "mention",
+    "bot"
+  ],
+  "author": "OpenClaw",
+  "license": "MIT",
+  "openclaw": {
+    "plugin": true
+  }
+}

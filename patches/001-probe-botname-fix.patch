@@ -1,0 +1,12 @@
+--- a/dist/probe-DSCPsSys.js
++++ b/dist/probe-DSCPsSys.js
+@@ -410,7 +410,7 @@
+ 		const bot = response.bot || response.data?.bot;
+ 		return setCachedProbeResult(cacheKey, {
+ 			ok: true,
+ 			appId: creds.appId,
+-			botName: bot?.bot_name,
++			botName: bot?.bot_name || bot?.app_name,
+ 			botOpenId: bot?.open_id
+ 		}, PROBE_SUCCESS_TTL_MS);
+ 	} catch (err) {

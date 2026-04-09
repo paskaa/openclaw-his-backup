@@ -1,0 +1,1950 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.4.2",
+    "lastTouchedAt": "2026-04-08T06:43:14.712Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-04-03T15:21:13.561Z",
+    "lastRunVersion": "2026.4.2",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local"
+  },
+  "browser": {
+    "enabled": true,
+    "executablePath": "/usr/bin/google-chrome-stable",
+    "headless": true,
+    "noSandbox": true
+  },
+  "auth": {
+    "profiles": {
+      "minimax:cn": {
+        "provider": "minimax",
+        "mode": "api_key",
+        "apiKey": "***REDACTED***"
+      },
+      "bailian": {
+        "provider": "bailian",
+        "mode": "api_key",
+        "apiKey": "***REDACTED***"
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "bailian": {
+        "baseUrl": "https://coding.dashscope.aliyuncs.com/v1",
+        "apiKey": "***REDACTED***",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "qwen3.5-plus",
+            "name": "qwen3.5-plus",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 65536,
+            "compat": {
+              "thinkingFormat": "qwen"
+            }
+          },
+          {
+            "id": "qwen3-max-2026-01-23",
+            "name": "qwen3-max-2026-01-23",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 65536,
+            "compat": {
+              "thinkingFormat": "qwen"
+            }
+          },
+          {
+            "id": "qwen3-coder-next",
+            "name": "qwen3-coder-next",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 65536
+          },
+          {
+            "id": "qwen3-coder-plus",
+            "name": "qwen3-coder-plus",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 65536
+          },
+          {
+            "id": "MiniMax-M2.5",
+            "name": "MiniMax-M2.5",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 196608,
+            "maxTokens": 32768
+          },
+          {
+            "id": "glm-5",
+            "name": "glm-5",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 202752,
+            "maxTokens": 16384
+          },
+          {
+            "id": "glm-4.7",
+            "name": "glm-4.7",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 202752,
+            "maxTokens": 16384,
+            "compat": {
+              "thinkingFormat": "qwen"
+            }
+          },
+          {
+            "id": "kimi-k2.5",
+            "name": "kimi-k2.5",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 32768,
+            "compat": {
+              "thinkingFormat": "qwen"
+            }
+          }
+        ]
+      },
+      "minimax": {
+        "baseUrl": "https://api.minimaxi.com/anthropic",
+        "api": "anthropic-messages",
+        "authHeader": true,
+        "models": [
+          {
+            "id": "minimax-m2.7-highspeed",
+            "name": "MiniMax M2.7 Highspeed",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.03,
+              "cacheWrite": 0.12
+            },
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          }
+        ],
+        "apiKey": "***REDACTED***"
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "bailian/qwen3.5-plus",
+        "fallbacks": [
+          "bailian/qwen3-max-2026-01-23",
+          "bailian/qwen3-coder-plus"
+        ]
+      },
+      "models": {
+        "bailian/kimi-k2.5": {
+          "alias": "Kimi K2.5"
+        },
+        "minimax/minimax-m2.7-highspeed": {
+          "alias": "Minimax Highspeed"
+        }
+      },
+      "workspace": "/root/.openclaw/workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main"
+      },
+      {
+        "id": "mc-gateway-12ba4cf7-8aea-4e1a-8df3-4c46e8d05fc6",
+        "name": "Local OpenClaw Gateway Agent",
+        "workspace": "/root/.openclaw/workspace/workspace-gateway-12ba4cf7-8aea-4e1a-8df3-4c46e8d05fc6",
+        "agentDir": "/root/.openclaw/agents/mc-gateway-12ba4cf7-8aea-4e1a-8df3-4c46e8d05fc6/agent",
+        "heartbeat": {
+          "every": "10m",
+          "includeReasoning": false,
+          "target": "last"
+        }
+      },
+      {
+        "id": "mc-gateway-42ec3fea-1d2f-4b7e-8fe4-54e6c2a37509",
+        "name": "Local OpenClaw Gateway Agent",
+        "workspace": "/root/.openclaw/workspace/workspace-gateway-42ec3fea-1d2f-4b7e-8fe4-54e6c2a37509",
+        "agentDir": "/root/.openclaw/agents/mc-gateway-42ec3fea-1d2f-4b7e-8fe4-54e6c2a37509/agent",
+        "heartbeat": {
+          "every": "10m",
+          "includeReasoning": false,
+          "target": "last"
+        }
+      },
+      {
+        "id": "zhugeliang",
+        "name": "诸葛亮",
+        "workspace": "/root/.openclaw/workspace-zhugeliang",
+        "agentDir": "/root/.openclaw/agents/zhugeliang/agent",
+        "model": "bailian/qwen3.5-plus",
+        "skills": [
+          "coding-agent",
+          "feishu-doc",
+          "feishu-wiki",
+          "zentao",
+          "zentao"
+        ],
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "guanyu",
+        "name": "关羽",
+        "workspace": "/root/.openclaw/workspace-guanyu",
+        "agentDir": "/root/.openclaw/agents/guanyu/agent",
+        "model": "bailian/qwen3-coder-next",
+        "skills": [
+          "coding-agent",
+          "feishu-doc",
+          "zentao"
+        ],
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "zhaoyun",
+        "name": "赵云",
+        "workspace": "/root/.openclaw/workspace-zhaoyun",
+        "agentDir": "/root/.openclaw/agents/zhaoyun/agent",
+        "model": "bailian/qwen3-coder-next",
+        "skills": [
+          "coding-agent",
+          "feishu-doc",
+          "zentao"
+        ],
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "xunyu",
+        "name": "荀彧",
+        "workspace": "/root/.openclaw/workspace-xunyu",
+        "agentDir": "/root/.openclaw/agents/xunyu/agent",
+        "model": "bailian/qwen3.5-plus",
+        "skills": [
+          "coding-agent",
+          "feishu-doc",
+          "feishu-bitable",
+          "zentao"
+        ],
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "zhangfei",
+        "name": "张飞",
+        "workspace": "/root/.openclaw/workspace-zhangfei",
+        "agentDir": "/root/.openclaw/agents/zhangfei/agent",
+        "model": "bailian/qwen3-coder-next",
+        "skills": [
+          "coding-agent",
+          "feishu-doc",
+          "zentao"
+        ],
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "huatuo",
+        "name": "华佗",
+        "workspace": "/root/.openclaw/workspace-huatuo",
+        "agentDir": "/root/.openclaw/agents/huatuo/agent",
+        "model": "bailian/qwen3.5-plus",
+        "skills": [
+          "feishu-doc",
+          "feishu-wiki",
+          "feishu-bitable",
+          "zentao"
+        ],
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "chenlin",
+        "name": "陈琳",
+        "workspace": "/root/.openclaw/workspace-chenlin",
+        "agentDir": "/root/.openclaw/agents/chenlin/agent",
+        "model": "bailian/glm-5",
+        "skills": [
+          "feishu-doc",
+          "feishu-create-doc",
+          "feishu-update-doc",
+          "feishu-fetch-doc",
+          "zentao",
+          "zentao"
+        ],
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "liubei",
+        "name": "刘备",
+        "workspace": "/root/.openclaw/workspace-liubei",
+        "agentDir": "/root/.openclaw/agents/liubei/agent",
+        "model": "bailian/kimi-k2.5",
+        "skills": [
+          "coding-agent",
+          "zentao",
+          "zentao"
+        ],
+        "subagents": {
+          "allowAgents": [
+            "*"
+          ]
+        }
+      },
+      {
+        "id": "legal-contract-reviewer",
+        "name": "legal-contract-reviewer",
+        "workspace": "/root/.openclaw/agency-agents/legal-contract-reviewer",
+        "agentDir": "/root/.openclaw/agents/legal-contract-reviewer/agent"
+      },
+      {
+        "id": "engineering-filament-optimization-specialist",
+        "name": "engineering-filament-optimization-specialist",
+        "workspace": "/root/.openclaw/agency-agents/engineering-filament-optimization-specialist",
+        "agentDir": "/root/.openclaw/agents/engineering-filament-optimization-specialist/agent"
+      },
+      {
+        "id": "marketing-wechat-operator",
+        "name": "marketing-wechat-operator",
+        "workspace": "/root/.openclaw/agency-agents/marketing-wechat-operator",
+        "agentDir": "/root/.openclaw/agents/marketing-wechat-operator/agent"
+      },
+      {
+        "id": "engineering-email-intelligence-engineer",
+        "name": "engineering-email-intelligence-engineer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-email-intelligence-engineer",
+        "agentDir": "/root/.openclaw/agents/engineering-email-intelligence-engineer/agent"
+      },
+      {
+        "id": "technical-translator-agent",
+        "name": "technical-translator-agent",
+        "workspace": "/root/.openclaw/agency-agents/technical-translator-agent",
+        "agentDir": "/root/.openclaw/agents/technical-translator-agent/agent"
+      },
+      {
+        "id": "finance-fraud-detector",
+        "name": "finance-fraud-detector",
+        "workspace": "/root/.openclaw/agency-agents/finance-fraud-detector",
+        "agentDir": "/root/.openclaw/agents/finance-fraud-detector/agent"
+      },
+      {
+        "id": "legal-policy-writer",
+        "name": "legal-policy-writer",
+        "workspace": "/root/.openclaw/agency-agents/legal-policy-writer",
+        "agentDir": "/root/.openclaw/agents/legal-policy-writer/agent"
+      },
+      {
+        "id": "academic-anthropologist",
+        "name": "academic-anthropologist",
+        "workspace": "/root/.openclaw/agency-agents/academic-anthropologist",
+        "agentDir": "/root/.openclaw/agents/academic-anthropologist/agent"
+      },
+      {
+        "id": "academic-geographer",
+        "name": "academic-geographer",
+        "workspace": "/root/.openclaw/agency-agents/academic-geographer",
+        "agentDir": "/root/.openclaw/agents/academic-geographer/agent"
+      },
+      {
+        "id": "academic-historian",
+        "name": "academic-historian",
+        "workspace": "/root/.openclaw/agency-agents/academic-historian",
+        "agentDir": "/root/.openclaw/agents/academic-historian/agent"
+      },
+      {
+        "id": "academic-narratologist",
+        "name": "academic-narratologist",
+        "workspace": "/root/.openclaw/agency-agents/academic-narratologist",
+        "agentDir": "/root/.openclaw/agents/academic-narratologist/agent"
+      },
+      {
+        "id": "academic-psychologist",
+        "name": "academic-psychologist",
+        "workspace": "/root/.openclaw/agency-agents/academic-psychologist",
+        "agentDir": "/root/.openclaw/agents/academic-psychologist/agent"
+      },
+      {
+        "id": "academic-study-planner",
+        "name": "academic-study-planner",
+        "workspace": "/root/.openclaw/agency-agents/academic-study-planner",
+        "agentDir": "/root/.openclaw/agents/academic-study-planner/agent"
+      },
+      {
+        "id": "accounts-payable-agent",
+        "name": "accounts-payable-agent",
+        "workspace": "/root/.openclaw/agency-agents/accounts-payable-agent",
+        "agentDir": "/root/.openclaw/agents/accounts-payable-agent/agent"
+      },
+      {
+        "id": "agentic-identity-trust",
+        "name": "agentic-identity-trust",
+        "workspace": "/root/.openclaw/agency-agents/agentic-identity-trust",
+        "agentDir": "/root/.openclaw/agents/agentic-identity-trust/agent"
+      },
+      {
+        "id": "agents-orchestrator",
+        "name": "agents-orchestrator",
+        "workspace": "/root/.openclaw/agency-agents/agents-orchestrator",
+        "agentDir": "/root/.openclaw/agents/agents-orchestrator/agent"
+      },
+      {
+        "id": "automation-governance-architect",
+        "name": "automation-governance-architect",
+        "workspace": "/root/.openclaw/agency-agents/automation-governance-architect",
+        "agentDir": "/root/.openclaw/agents/automation-governance-architect/agent"
+      },
+      {
+        "id": "blender-addon-engineer",
+        "name": "blender-addon-engineer",
+        "workspace": "/root/.openclaw/agency-agents/blender-addon-engineer",
+        "agentDir": "/root/.openclaw/agents/blender-addon-engineer/agent"
+      },
+      {
+        "id": "blockchain-security-auditor",
+        "name": "blockchain-security-auditor",
+        "workspace": "/root/.openclaw/agency-agents/blockchain-security-auditor",
+        "agentDir": "/root/.openclaw/agents/blockchain-security-auditor/agent"
+      },
+      {
+        "id": "compliance-auditor",
+        "name": "compliance-auditor",
+        "workspace": "/root/.openclaw/agency-agents/compliance-auditor",
+        "agentDir": "/root/.openclaw/agents/compliance-auditor/agent"
+      },
+      {
+        "id": "corporate-training-designer",
+        "name": "corporate-training-designer",
+        "workspace": "/root/.openclaw/agency-agents/corporate-training-designer",
+        "agentDir": "/root/.openclaw/agents/corporate-training-designer/agent"
+      },
+      {
+        "id": "data-consolidation-agent",
+        "name": "data-consolidation-agent",
+        "workspace": "/root/.openclaw/agency-agents/data-consolidation-agent",
+        "agentDir": "/root/.openclaw/agents/data-consolidation-agent/agent"
+      },
+      {
+        "id": "design-brand-guardian",
+        "name": "design-brand-guardian",
+        "workspace": "/root/.openclaw/agency-agents/design-brand-guardian",
+        "agentDir": "/root/.openclaw/agents/design-brand-guardian/agent"
+      },
+      {
+        "id": "design-image-prompt-engineer",
+        "name": "design-image-prompt-engineer",
+        "workspace": "/root/.openclaw/agency-agents/design-image-prompt-engineer",
+        "agentDir": "/root/.openclaw/agents/design-image-prompt-engineer/agent"
+      },
+      {
+        "id": "design-inclusive-visuals-specialist",
+        "name": "design-inclusive-visuals-specialist",
+        "workspace": "/root/.openclaw/agency-agents/design-inclusive-visuals-specialist",
+        "agentDir": "/root/.openclaw/agents/design-inclusive-visuals-specialist/agent"
+      },
+      {
+        "id": "design-ui-designer",
+        "name": "design-ui-designer",
+        "workspace": "/root/.openclaw/agency-agents/design-ui-designer",
+        "agentDir": "/root/.openclaw/agents/design-ui-designer/agent"
+      },
+      {
+        "id": "design-ux-architect",
+        "name": "design-ux-architect",
+        "workspace": "/root/.openclaw/agency-agents/design-ux-architect",
+        "agentDir": "/root/.openclaw/agents/design-ux-architect/agent"
+      },
+      {
+        "id": "design-ux-researcher",
+        "name": "design-ux-researcher",
+        "workspace": "/root/.openclaw/agency-agents/design-ux-researcher",
+        "agentDir": "/root/.openclaw/agents/design-ux-researcher/agent"
+      },
+      {
+        "id": "design-visual-storyteller",
+        "name": "design-visual-storyteller",
+        "workspace": "/root/.openclaw/agency-agents/design-visual-storyteller",
+        "agentDir": "/root/.openclaw/agents/design-visual-storyteller/agent"
+      },
+      {
+        "id": "design-whimsy-injector",
+        "name": "design-whimsy-injector",
+        "workspace": "/root/.openclaw/agency-agents/design-whimsy-injector",
+        "agentDir": "/root/.openclaw/agents/design-whimsy-injector/agent"
+      },
+      {
+        "id": "engineering-ai-data-remediation-engineer",
+        "name": "engineering-ai-data-remediation-engineer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-ai-data-remediation-engineer",
+        "agentDir": "/root/.openclaw/agents/engineering-ai-data-remediation-engineer/agent"
+      },
+      {
+        "id": "engineering-ai-engineer",
+        "name": "engineering-ai-engineer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-ai-engineer",
+        "agentDir": "/root/.openclaw/agents/engineering-ai-engineer/agent"
+      },
+      {
+        "id": "engineering-autonomous-optimization-architect",
+        "name": "engineering-autonomous-optimization-architect",
+        "workspace": "/root/.openclaw/agency-agents/engineering-autonomous-optimization-architect",
+        "agentDir": "/root/.openclaw/agents/engineering-autonomous-optimization-architect/agent"
+      },
+      {
+        "id": "engineering-backend-architect",
+        "name": "engineering-backend-architect",
+        "workspace": "/root/.openclaw/agency-agents/engineering-backend-architect",
+        "agentDir": "/root/.openclaw/agents/engineering-backend-architect/agent"
+      },
+      {
+        "id": "engineering-cms-developer",
+        "name": "engineering-cms-developer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-cms-developer",
+        "agentDir": "/root/.openclaw/agents/engineering-cms-developer/agent"
+      },
+      {
+        "id": "engineering-code-reviewer",
+        "name": "engineering-code-reviewer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-code-reviewer",
+        "agentDir": "/root/.openclaw/agents/engineering-code-reviewer/agent"
+      },
+      {
+        "id": "engineering-data-engineer",
+        "name": "engineering-data-engineer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-data-engineer",
+        "agentDir": "/root/.openclaw/agents/engineering-data-engineer/agent"
+      },
+      {
+        "id": "engineering-database-optimizer",
+        "name": "engineering-database-optimizer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-database-optimizer",
+        "agentDir": "/root/.openclaw/agents/engineering-database-optimizer/agent"
+      },
+      {
+        "id": "engineering-devops-automator",
+        "name": "engineering-devops-automator",
+        "workspace": "/root/.openclaw/agency-agents/engineering-devops-automator",
+        "agentDir": "/root/.openclaw/agents/engineering-devops-automator/agent"
+      },
+      {
+        "id": "engineering-dingtalk-integration-developer",
+        "name": "engineering-dingtalk-integration-developer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-dingtalk-integration-developer",
+        "agentDir": "/root/.openclaw/agents/engineering-dingtalk-integration-developer/agent"
+      },
+      {
+        "id": "engineering-embedded-firmware-engineer",
+        "name": "engineering-embedded-firmware-engineer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-embedded-firmware-engineer",
+        "agentDir": "/root/.openclaw/agents/engineering-embedded-firmware-engineer/agent"
+      },
+      {
+        "id": "engineering-embedded-linux-driver-engineer",
+        "name": "engineering-embedded-linux-driver-engineer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-embedded-linux-driver-engineer",
+        "agentDir": "/root/.openclaw/agents/engineering-embedded-linux-driver-engineer/agent"
+      },
+      {
+        "id": "engineering-feishu-integration-developer",
+        "name": "engineering-feishu-integration-developer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-feishu-integration-developer",
+        "agentDir": "/root/.openclaw/agents/engineering-feishu-integration-developer/agent"
+      },
+      {
+        "id": "engineering-fpga-digital-design-engineer",
+        "name": "engineering-fpga-digital-design-engineer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-fpga-digital-design-engineer",
+        "agentDir": "/root/.openclaw/agents/engineering-fpga-digital-design-engineer/agent"
+      },
+      {
+        "id": "engineering-frontend-developer",
+        "name": "engineering-frontend-developer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-frontend-developer",
+        "agentDir": "/root/.openclaw/agents/engineering-frontend-developer/agent"
+      },
+      {
+        "id": "engineering-git-workflow-master",
+        "name": "engineering-git-workflow-master",
+        "workspace": "/root/.openclaw/agency-agents/engineering-git-workflow-master",
+        "agentDir": "/root/.openclaw/agents/engineering-git-workflow-master/agent"
+      },
+      {
+        "id": "engineering-incident-response-commander",
+        "name": "engineering-incident-response-commander",
+        "workspace": "/root/.openclaw/agency-agents/engineering-incident-response-commander",
+        "agentDir": "/root/.openclaw/agents/engineering-incident-response-commander/agent"
+      },
+      {
+        "id": "engineering-iot-solution-architect",
+        "name": "engineering-iot-solution-architect",
+        "workspace": "/root/.openclaw/agency-agents/engineering-iot-solution-architect",
+        "agentDir": "/root/.openclaw/agents/engineering-iot-solution-architect/agent"
+      },
+      {
+        "id": "engineering-mobile-app-builder",
+        "name": "engineering-mobile-app-builder",
+        "workspace": "/root/.openclaw/agency-agents/engineering-mobile-app-builder",
+        "agentDir": "/root/.openclaw/agents/engineering-mobile-app-builder/agent"
+      },
+      {
+        "id": "engineering-rapid-prototyper",
+        "name": "engineering-rapid-prototyper",
+        "workspace": "/root/.openclaw/agency-agents/engineering-rapid-prototyper",
+        "agentDir": "/root/.openclaw/agents/engineering-rapid-prototyper/agent"
+      },
+      {
+        "id": "engineering-security-engineer",
+        "name": "engineering-security-engineer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-security-engineer",
+        "agentDir": "/root/.openclaw/agents/engineering-security-engineer/agent"
+      },
+      {
+        "id": "engineering-senior-developer",
+        "name": "engineering-senior-developer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-senior-developer",
+        "agentDir": "/root/.openclaw/agents/engineering-senior-developer/agent"
+      },
+      {
+        "id": "engineering-software-architect",
+        "name": "engineering-software-architect",
+        "workspace": "/root/.openclaw/agency-agents/engineering-software-architect",
+        "agentDir": "/root/.openclaw/agents/engineering-software-architect/agent"
+      },
+      {
+        "id": "engineering-solidity-smart-contract-engineer",
+        "name": "engineering-solidity-smart-contract-engineer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-solidity-smart-contract-engineer",
+        "agentDir": "/root/.openclaw/agents/engineering-solidity-smart-contract-engineer/agent"
+      },
+      {
+        "id": "engineering-sre",
+        "name": "engineering-sre",
+        "workspace": "/root/.openclaw/agency-agents/engineering-sre",
+        "agentDir": "/root/.openclaw/agents/engineering-sre/agent"
+      },
+      {
+        "id": "engineering-technical-writer",
+        "name": "engineering-technical-writer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-technical-writer",
+        "agentDir": "/root/.openclaw/agents/engineering-technical-writer/agent"
+      },
+      {
+        "id": "engineering-threat-detection-engineer",
+        "name": "engineering-threat-detection-engineer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-threat-detection-engineer",
+        "agentDir": "/root/.openclaw/agents/engineering-threat-detection-engineer/agent"
+      },
+      {
+        "id": "engineering-wechat-mini-program-developer",
+        "name": "engineering-wechat-mini-program-developer",
+        "workspace": "/root/.openclaw/agency-agents/engineering-wechat-mini-program-developer",
+        "agentDir": "/root/.openclaw/agents/engineering-wechat-mini-program-developer/agent"
+      },
+      {
+        "id": "finance-financial-forecaster",
+        "name": "finance-financial-forecaster",
+        "workspace": "/root/.openclaw/agency-agents/finance-financial-forecaster",
+        "agentDir": "/root/.openclaw/agents/finance-financial-forecaster/agent"
+      },
+      {
+        "id": "finance-invoice-manager",
+        "name": "finance-invoice-manager",
+        "workspace": "/root/.openclaw/agency-agents/finance-invoice-manager",
+        "agentDir": "/root/.openclaw/agents/finance-invoice-manager/agent"
+      },
+      {
+        "id": "game-audio-engineer",
+        "name": "game-audio-engineer",
+        "workspace": "/root/.openclaw/agency-agents/game-audio-engineer",
+        "agentDir": "/root/.openclaw/agents/game-audio-engineer/agent"
+      },
+      {
+        "id": "game-designer",
+        "name": "game-designer",
+        "workspace": "/root/.openclaw/agency-agents/game-designer",
+        "agentDir": "/root/.openclaw/agents/game-designer/agent"
+      },
+      {
+        "id": "gaokao-college-advisor",
+        "name": "gaokao-college-advisor",
+        "workspace": "/root/.openclaw/agency-agents/gaokao-college-advisor",
+        "agentDir": "/root/.openclaw/agents/gaokao-college-advisor/agent"
+      },
+      {
+        "id": "godot-gameplay-scripter",
+        "name": "godot-gameplay-scripter",
+        "workspace": "/root/.openclaw/agency-agents/godot-gameplay-scripter",
+        "agentDir": "/root/.openclaw/agents/godot-gameplay-scripter/agent"
+      },
+      {
+        "id": "godot-multiplayer-engineer",
+        "name": "godot-multiplayer-engineer",
+        "workspace": "/root/.openclaw/agency-agents/godot-multiplayer-engineer",
+        "agentDir": "/root/.openclaw/agents/godot-multiplayer-engineer/agent"
+      },
+      {
+        "id": "godot-shader-developer",
+        "name": "godot-shader-developer",
+        "workspace": "/root/.openclaw/agency-agents/godot-shader-developer",
+        "agentDir": "/root/.openclaw/agents/godot-shader-developer/agent"
+      },
+      {
+        "id": "government-digital-presales-consultant",
+        "name": "government-digital-presales-consultant",
+        "workspace": "/root/.openclaw/agency-agents/government-digital-presales-consultant",
+        "agentDir": "/root/.openclaw/agents/government-digital-presales-consultant/agent"
+      },
+      {
+        "id": "healthcare-marketing-compliance",
+        "name": "healthcare-marketing-compliance",
+        "workspace": "/root/.openclaw/agency-agents/healthcare-marketing-compliance",
+        "agentDir": "/root/.openclaw/agents/healthcare-marketing-compliance/agent"
+      },
+      {
+        "id": "hr-performance-reviewer",
+        "name": "hr-performance-reviewer",
+        "workspace": "/root/.openclaw/agency-agents/hr-performance-reviewer",
+        "agentDir": "/root/.openclaw/agents/hr-performance-reviewer/agent"
+      },
+      {
+        "id": "hr-recruiter",
+        "name": "hr-recruiter",
+        "workspace": "/root/.openclaw/agency-agents/hr-recruiter",
+        "agentDir": "/root/.openclaw/agents/hr-recruiter/agent"
+      },
+      {
+        "id": "identity-graph-operator",
+        "name": "identity-graph-operator",
+        "workspace": "/root/.openclaw/agency-agents/identity-graph-operator",
+        "agentDir": "/root/.openclaw/agents/identity-graph-operator/agent"
+      },
+      {
+        "id": "level-designer",
+        "name": "level-designer",
+        "workspace": "/root/.openclaw/agency-agents/level-designer",
+        "agentDir": "/root/.openclaw/agents/level-designer/agent"
+      },
+      {
+        "id": "lsp-index-engineer",
+        "name": "lsp-index-engineer",
+        "workspace": "/root/.openclaw/agency-agents/lsp-index-engineer",
+        "agentDir": "/root/.openclaw/agents/lsp-index-engineer/agent"
+      },
+      {
+        "id": "macos-spatial-metal-engineer",
+        "name": "macos-spatial-metal-engineer",
+        "workspace": "/root/.openclaw/agency-agents/macos-spatial-metal-engineer",
+        "agentDir": "/root/.openclaw/agents/macos-spatial-metal-engineer/agent"
+      },
+      {
+        "id": "marketing-ai-citation-strategist",
+        "name": "marketing-ai-citation-strategist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-ai-citation-strategist",
+        "agentDir": "/root/.openclaw/agents/marketing-ai-citation-strategist/agent"
+      },
+      {
+        "id": "marketing-app-store-optimizer",
+        "name": "marketing-app-store-optimizer",
+        "workspace": "/root/.openclaw/agency-agents/marketing-app-store-optimizer",
+        "agentDir": "/root/.openclaw/agents/marketing-app-store-optimizer/agent"
+      },
+      {
+        "id": "marketing-baidu-seo-specialist",
+        "name": "marketing-baidu-seo-specialist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-baidu-seo-specialist",
+        "agentDir": "/root/.openclaw/agents/marketing-baidu-seo-specialist/agent"
+      },
+      {
+        "id": "marketing-bilibili-strategist",
+        "name": "marketing-bilibili-strategist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-bilibili-strategist",
+        "agentDir": "/root/.openclaw/agents/marketing-bilibili-strategist/agent"
+      },
+      {
+        "id": "marketing-book-co-author",
+        "name": "marketing-book-co-author",
+        "workspace": "/root/.openclaw/agency-agents/marketing-book-co-author",
+        "agentDir": "/root/.openclaw/agents/marketing-book-co-author/agent"
+      },
+      {
+        "id": "marketing-carousel-growth-engine",
+        "name": "marketing-carousel-growth-engine",
+        "workspace": "/root/.openclaw/agency-agents/marketing-carousel-growth-engine",
+        "agentDir": "/root/.openclaw/agents/marketing-carousel-growth-engine/agent"
+      },
+      {
+        "id": "marketing-china-ecommerce-operator",
+        "name": "marketing-china-ecommerce-operator",
+        "workspace": "/root/.openclaw/agency-agents/marketing-china-ecommerce-operator",
+        "agentDir": "/root/.openclaw/agents/marketing-china-ecommerce-operator/agent"
+      },
+      {
+        "id": "marketing-china-market-localization-strategist",
+        "name": "marketing-china-market-localization-strategist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-china-market-localization-strategist",
+        "agentDir": "/root/.openclaw/agents/marketing-china-market-localization-strategist/agent"
+      },
+      {
+        "id": "marketing-content-creator",
+        "name": "marketing-content-creator",
+        "workspace": "/root/.openclaw/agency-agents/marketing-content-creator",
+        "agentDir": "/root/.openclaw/agents/marketing-content-creator/agent"
+      },
+      {
+        "id": "marketing-cross-border-ecommerce",
+        "name": "marketing-cross-border-ecommerce",
+        "workspace": "/root/.openclaw/agency-agents/marketing-cross-border-ecommerce",
+        "agentDir": "/root/.openclaw/agents/marketing-cross-border-ecommerce/agent"
+      },
+      {
+        "id": "marketing-douyin-strategist",
+        "name": "marketing-douyin-strategist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-douyin-strategist",
+        "agentDir": "/root/.openclaw/agents/marketing-douyin-strategist/agent"
+      },
+      {
+        "id": "marketing-ecommerce-operator",
+        "name": "marketing-ecommerce-operator",
+        "workspace": "/root/.openclaw/agency-agents/marketing-ecommerce-operator",
+        "agentDir": "/root/.openclaw/agents/marketing-ecommerce-operator/agent"
+      },
+      {
+        "id": "marketing-growth-hacker",
+        "name": "marketing-growth-hacker",
+        "workspace": "/root/.openclaw/agency-agents/marketing-growth-hacker",
+        "agentDir": "/root/.openclaw/agents/marketing-growth-hacker/agent"
+      },
+      {
+        "id": "marketing-instagram-curator",
+        "name": "marketing-instagram-curator",
+        "workspace": "/root/.openclaw/agency-agents/marketing-instagram-curator",
+        "agentDir": "/root/.openclaw/agents/marketing-instagram-curator/agent"
+      },
+      {
+        "id": "marketing-knowledge-commerce-strategist",
+        "name": "marketing-knowledge-commerce-strategist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-knowledge-commerce-strategist",
+        "agentDir": "/root/.openclaw/agents/marketing-knowledge-commerce-strategist/agent"
+      },
+      {
+        "id": "marketing-kuaishou-strategist",
+        "name": "marketing-kuaishou-strategist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-kuaishou-strategist",
+        "agentDir": "/root/.openclaw/agents/marketing-kuaishou-strategist/agent"
+      },
+      {
+        "id": "marketing-linkedin-content-creator",
+        "name": "marketing-linkedin-content-creator",
+        "workspace": "/root/.openclaw/agency-agents/marketing-linkedin-content-creator",
+        "agentDir": "/root/.openclaw/agents/marketing-linkedin-content-creator/agent"
+      },
+      {
+        "id": "marketing-livestream-commerce-coach",
+        "name": "marketing-livestream-commerce-coach",
+        "workspace": "/root/.openclaw/agency-agents/marketing-livestream-commerce-coach",
+        "agentDir": "/root/.openclaw/agents/marketing-livestream-commerce-coach/agent"
+      },
+      {
+        "id": "marketing-podcast-strategist",
+        "name": "marketing-podcast-strategist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-podcast-strategist",
+        "agentDir": "/root/.openclaw/agents/marketing-podcast-strategist/agent"
+      },
+      {
+        "id": "marketing-private-domain-operator",
+        "name": "marketing-private-domain-operator",
+        "workspace": "/root/.openclaw/agency-agents/marketing-private-domain-operator",
+        "agentDir": "/root/.openclaw/agents/marketing-private-domain-operator/agent"
+      },
+      {
+        "id": "marketing-reddit-community-builder",
+        "name": "marketing-reddit-community-builder",
+        "workspace": "/root/.openclaw/agency-agents/marketing-reddit-community-builder",
+        "agentDir": "/root/.openclaw/agents/marketing-reddit-community-builder/agent"
+      },
+      {
+        "id": "marketing-seo-specialist",
+        "name": "marketing-seo-specialist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-seo-specialist",
+        "agentDir": "/root/.openclaw/agents/marketing-seo-specialist/agent"
+      },
+      {
+        "id": "marketing-short-video-editing-coach",
+        "name": "marketing-short-video-editing-coach",
+        "workspace": "/root/.openclaw/agency-agents/marketing-short-video-editing-coach",
+        "agentDir": "/root/.openclaw/agents/marketing-short-video-editing-coach/agent"
+      },
+      {
+        "id": "marketing-social-media-strategist",
+        "name": "marketing-social-media-strategist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-social-media-strategist",
+        "agentDir": "/root/.openclaw/agents/marketing-social-media-strategist/agent"
+      },
+      {
+        "id": "marketing-tiktok-strategist",
+        "name": "marketing-tiktok-strategist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-tiktok-strategist",
+        "agentDir": "/root/.openclaw/agents/marketing-tiktok-strategist/agent"
+      },
+      {
+        "id": "marketing-twitter-engager",
+        "name": "marketing-twitter-engager",
+        "workspace": "/root/.openclaw/agency-agents/marketing-twitter-engager",
+        "agentDir": "/root/.openclaw/agents/marketing-twitter-engager/agent"
+      },
+      {
+        "id": "marketing-video-optimization-specialist",
+        "name": "marketing-video-optimization-specialist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-video-optimization-specialist",
+        "agentDir": "/root/.openclaw/agents/marketing-video-optimization-specialist/agent"
+      },
+      {
+        "id": "marketing-wechat-official-account",
+        "name": "marketing-wechat-official-account",
+        "workspace": "/root/.openclaw/agency-agents/marketing-wechat-official-account",
+        "agentDir": "/root/.openclaw/agents/marketing-wechat-official-account/agent"
+      },
+      {
+        "id": "marketing-weibo-strategist",
+        "name": "marketing-weibo-strategist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-weibo-strategist",
+        "agentDir": "/root/.openclaw/agents/marketing-weibo-strategist/agent"
+      },
+      {
+        "id": "marketing-weixin-channels-strategist",
+        "name": "marketing-weixin-channels-strategist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-weixin-channels-strategist",
+        "agentDir": "/root/.openclaw/agents/marketing-weixin-channels-strategist/agent"
+      },
+      {
+        "id": "marketing-xiaohongshu-operator",
+        "name": "marketing-xiaohongshu-operator",
+        "workspace": "/root/.openclaw/agency-agents/marketing-xiaohongshu-operator",
+        "agentDir": "/root/.openclaw/agents/marketing-xiaohongshu-operator/agent"
+      },
+      {
+        "id": "marketing-xiaohongshu-specialist",
+        "name": "marketing-xiaohongshu-specialist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-xiaohongshu-specialist",
+        "agentDir": "/root/.openclaw/agents/marketing-xiaohongshu-specialist/agent"
+      },
+      {
+        "id": "marketing-zhihu-strategist",
+        "name": "marketing-zhihu-strategist",
+        "workspace": "/root/.openclaw/agency-agents/marketing-zhihu-strategist",
+        "agentDir": "/root/.openclaw/agents/marketing-zhihu-strategist/agent"
+      },
+      {
+        "id": "narrative-designer",
+        "name": "narrative-designer",
+        "workspace": "/root/.openclaw/agency-agents/narrative-designer",
+        "agentDir": "/root/.openclaw/agents/narrative-designer/agent"
+      },
+      {
+        "id": "paid-media-auditor",
+        "name": "paid-media-auditor",
+        "workspace": "/root/.openclaw/agency-agents/paid-media-auditor",
+        "agentDir": "/root/.openclaw/agents/paid-media-auditor/agent"
+      },
+      {
+        "id": "paid-media-creative-strategist",
+        "name": "paid-media-creative-strategist",
+        "workspace": "/root/.openclaw/agency-agents/paid-media-creative-strategist",
+        "agentDir": "/root/.openclaw/agents/paid-media-creative-strategist/agent"
+      },
+      {
+        "id": "paid-media-paid-social-strategist",
+        "name": "paid-media-paid-social-strategist",
+        "workspace": "/root/.openclaw/agency-agents/paid-media-paid-social-strategist",
+        "agentDir": "/root/.openclaw/agents/paid-media-paid-social-strategist/agent"
+      },
+      {
+        "id": "paid-media-ppc-strategist",
+        "name": "paid-media-ppc-strategist",
+        "workspace": "/root/.openclaw/agency-agents/paid-media-ppc-strategist",
+        "agentDir": "/root/.openclaw/agents/paid-media-ppc-strategist/agent"
+      },
+      {
+        "id": "paid-media-programmatic-buyer",
+        "name": "paid-media-programmatic-buyer",
+        "workspace": "/root/.openclaw/agency-agents/paid-media-programmatic-buyer",
+        "agentDir": "/root/.openclaw/agents/paid-media-programmatic-buyer/agent"
+      },
+      {
+        "id": "paid-media-search-query-analyst",
+        "name": "paid-media-search-query-analyst",
+        "workspace": "/root/.openclaw/agency-agents/paid-media-search-query-analyst",
+        "agentDir": "/root/.openclaw/agents/paid-media-search-query-analyst/agent"
+      },
+      {
+        "id": "paid-media-tracking-specialist",
+        "name": "paid-media-tracking-specialist",
+        "workspace": "/root/.openclaw/agency-agents/paid-media-tracking-specialist",
+        "agentDir": "/root/.openclaw/agents/paid-media-tracking-specialist/agent"
+      },
+      {
+        "id": "product-behavioral-nudge-engine",
+        "name": "product-behavioral-nudge-engine",
+        "workspace": "/root/.openclaw/agency-agents/product-behavioral-nudge-engine",
+        "agentDir": "/root/.openclaw/agents/product-behavioral-nudge-engine/agent"
+      },
+      {
+        "id": "product-feedback-synthesizer",
+        "name": "product-feedback-synthesizer",
+        "workspace": "/root/.openclaw/agency-agents/product-feedback-synthesizer",
+        "agentDir": "/root/.openclaw/agents/product-feedback-synthesizer/agent"
+      },
+      {
+        "id": "product-manager",
+        "name": "product-manager",
+        "workspace": "/root/.openclaw/agency-agents/product-manager",
+        "agentDir": "/root/.openclaw/agents/product-manager/agent"
+      },
+      {
+        "id": "product-sprint-prioritizer",
+        "name": "product-sprint-prioritizer",
+        "workspace": "/root/.openclaw/agency-agents/product-sprint-prioritizer",
+        "agentDir": "/root/.openclaw/agents/product-sprint-prioritizer/agent"
+      },
+      {
+        "id": "product-trend-researcher",
+        "name": "product-trend-researcher",
+        "workspace": "/root/.openclaw/agency-agents/product-trend-researcher",
+        "agentDir": "/root/.openclaw/agents/product-trend-researcher/agent"
+      },
+      {
+        "id": "project-management-experiment-tracker",
+        "name": "project-management-experiment-tracker",
+        "workspace": "/root/.openclaw/agency-agents/project-management-experiment-tracker",
+        "agentDir": "/root/.openclaw/agents/project-management-experiment-tracker/agent"
+      },
+      {
+        "id": "project-management-jira-workflow-steward",
+        "name": "project-management-jira-workflow-steward",
+        "workspace": "/root/.openclaw/agency-agents/project-management-jira-workflow-steward",
+        "agentDir": "/root/.openclaw/agents/project-management-jira-workflow-steward/agent"
+      },
+      {
+        "id": "project-management-project-shepherd",
+        "name": "project-management-project-shepherd",
+        "workspace": "/root/.openclaw/agency-agents/project-management-project-shepherd",
+        "agentDir": "/root/.openclaw/agents/project-management-project-shepherd/agent"
+      },
+      {
+        "id": "project-management-studio-operations",
+        "name": "project-management-studio-operations",
+        "workspace": "/root/.openclaw/agency-agents/project-management-studio-operations",
+        "agentDir": "/root/.openclaw/agents/project-management-studio-operations/agent"
+      },
+      {
+        "id": "project-management-studio-producer",
+        "name": "project-management-studio-producer",
+        "workspace": "/root/.openclaw/agency-agents/project-management-studio-producer",
+        "agentDir": "/root/.openclaw/agents/project-management-studio-producer/agent"
+      },
+      {
+        "id": "project-manager-senior",
+        "name": "project-manager-senior",
+        "workspace": "/root/.openclaw/agency-agents/project-manager-senior",
+        "agentDir": "/root/.openclaw/agents/project-manager-senior/agent"
+      },
+      {
+        "id": "prompt-engineer",
+        "name": "prompt-engineer",
+        "workspace": "/root/.openclaw/agency-agents/prompt-engineer",
+        "agentDir": "/root/.openclaw/agents/prompt-engineer/agent"
+      },
+      {
+        "id": "recruitment-specialist",
+        "name": "recruitment-specialist",
+        "workspace": "/root/.openclaw/agency-agents/recruitment-specialist",
+        "agentDir": "/root/.openclaw/agents/recruitment-specialist/agent"
+      },
+      {
+        "id": "report-distribution-agent",
+        "name": "report-distribution-agent",
+        "workspace": "/root/.openclaw/agency-agents/report-distribution-agent",
+        "agentDir": "/root/.openclaw/agents/report-distribution-agent/agent"
+      },
+      {
+        "id": "roblox-avatar-creator",
+        "name": "roblox-avatar-creator",
+        "workspace": "/root/.openclaw/agency-agents/roblox-avatar-creator",
+        "agentDir": "/root/.openclaw/agents/roblox-avatar-creator/agent"
+      },
+      {
+        "id": "roblox-experience-designer",
+        "name": "roblox-experience-designer",
+        "workspace": "/root/.openclaw/agency-agents/roblox-experience-designer",
+        "agentDir": "/root/.openclaw/agents/roblox-experience-designer/agent"
+      },
+      {
+        "id": "roblox-systems-scripter",
+        "name": "roblox-systems-scripter",
+        "workspace": "/root/.openclaw/agency-agents/roblox-systems-scripter",
+        "agentDir": "/root/.openclaw/agents/roblox-systems-scripter/agent"
+      },
+      {
+        "id": "sales-account-strategist",
+        "name": "sales-account-strategist",
+        "workspace": "/root/.openclaw/agency-agents/sales-account-strategist",
+        "agentDir": "/root/.openclaw/agents/sales-account-strategist/agent"
+      },
+      {
+        "id": "sales-coach",
+        "name": "sales-coach",
+        "workspace": "/root/.openclaw/agency-agents/sales-coach",
+        "agentDir": "/root/.openclaw/agents/sales-coach/agent"
+      },
+      {
+        "id": "sales-data-extraction-agent",
+        "name": "sales-data-extraction-agent",
+        "workspace": "/root/.openclaw/agency-agents/sales-data-extraction-agent",
+        "agentDir": "/root/.openclaw/agents/sales-data-extraction-agent/agent"
+      },
+      {
+        "id": "sales-deal-strategist",
+        "name": "sales-deal-strategist",
+        "workspace": "/root/.openclaw/agency-agents/sales-deal-strategist",
+        "agentDir": "/root/.openclaw/agents/sales-deal-strategist/agent"
+      },
+      {
+        "id": "sales-discovery-coach",
+        "name": "sales-discovery-coach",
+        "workspace": "/root/.openclaw/agency-agents/sales-discovery-coach",
+        "agentDir": "/root/.openclaw/agents/sales-discovery-coach/agent"
+      },
+      {
+        "id": "sales-engineer",
+        "name": "sales-engineer",
+        "workspace": "/root/.openclaw/agency-agents/sales-engineer",
+        "agentDir": "/root/.openclaw/agents/sales-engineer/agent"
+      },
+      {
+        "id": "sales-outbound-strategist",
+        "name": "sales-outbound-strategist",
+        "workspace": "/root/.openclaw/agency-agents/sales-outbound-strategist",
+        "agentDir": "/root/.openclaw/agents/sales-outbound-strategist/agent"
+      },
+      {
+        "id": "sales-pipeline-analyst",
+        "name": "sales-pipeline-analyst",
+        "workspace": "/root/.openclaw/agency-agents/sales-pipeline-analyst",
+        "agentDir": "/root/.openclaw/agents/sales-pipeline-analyst/agent"
+      },
+      {
+        "id": "sales-proposal-strategist",
+        "name": "sales-proposal-strategist",
+        "workspace": "/root/.openclaw/agency-agents/sales-proposal-strategist",
+        "agentDir": "/root/.openclaw/agents/sales-proposal-strategist/agent"
+      },
+      {
+        "id": "specialized-ai-policy-writer",
+        "name": "specialized-ai-policy-writer",
+        "workspace": "/root/.openclaw/agency-agents/specialized-ai-policy-writer",
+        "agentDir": "/root/.openclaw/agents/specialized-ai-policy-writer/agent"
+      },
+      {
+        "id": "specialized-civil-engineer",
+        "name": "specialized-civil-engineer",
+        "workspace": "/root/.openclaw/agency-agents/specialized-civil-engineer",
+        "agentDir": "/root/.openclaw/agents/specialized-civil-engineer/agent"
+      },
+      {
+        "id": "specialized-cultural-intelligence-strategist",
+        "name": "specialized-cultural-intelligence-strategist",
+        "workspace": "/root/.openclaw/agency-agents/specialized-cultural-intelligence-strategist",
+        "agentDir": "/root/.openclaw/agents/specialized-cultural-intelligence-strategist/agent"
+      },
+      {
+        "id": "specialized-developer-advocate",
+        "name": "specialized-developer-advocate",
+        "workspace": "/root/.openclaw/agency-agents/specialized-developer-advocate",
+        "agentDir": "/root/.openclaw/agents/specialized-developer-advocate/agent"
+      },
+      {
+        "id": "specialized-document-generator",
+        "name": "specialized-document-generator",
+        "workspace": "/root/.openclaw/agency-agents/specialized-document-generator",
+        "agentDir": "/root/.openclaw/agents/specialized-document-generator/agent"
+      },
+      {
+        "id": "specialized-french-consulting-market",
+        "name": "specialized-french-consulting-market",
+        "workspace": "/root/.openclaw/agency-agents/specialized-french-consulting-market",
+        "agentDir": "/root/.openclaw/agents/specialized-french-consulting-market/agent"
+      },
+      {
+        "id": "specialized-korean-business-navigator",
+        "name": "specialized-korean-business-navigator",
+        "workspace": "/root/.openclaw/agency-agents/specialized-korean-business-navigator",
+        "agentDir": "/root/.openclaw/agents/specialized-korean-business-navigator/agent"
+      },
+      {
+        "id": "specialized-mcp-builder",
+        "name": "specialized-mcp-builder",
+        "workspace": "/root/.openclaw/agency-agents/specialized-mcp-builder",
+        "agentDir": "/root/.openclaw/agents/specialized-mcp-builder/agent"
+      },
+      {
+        "id": "specialized-meeting-assistant",
+        "name": "specialized-meeting-assistant",
+        "workspace": "/root/.openclaw/agency-agents/specialized-meeting-assistant",
+        "agentDir": "/root/.openclaw/agents/specialized-meeting-assistant/agent"
+      },
+      {
+        "id": "specialized-model-qa",
+        "name": "specialized-model-qa",
+        "workspace": "/root/.openclaw/agency-agents/specialized-model-qa",
+        "agentDir": "/root/.openclaw/agents/specialized-model-qa/agent"
+      },
+      {
+        "id": "specialized-pricing-optimizer",
+        "name": "specialized-pricing-optimizer",
+        "workspace": "/root/.openclaw/agency-agents/specialized-pricing-optimizer",
+        "agentDir": "/root/.openclaw/agents/specialized-pricing-optimizer/agent"
+      },
+      {
+        "id": "specialized-risk-assessor",
+        "name": "specialized-risk-assessor",
+        "workspace": "/root/.openclaw/agency-agents/specialized-risk-assessor",
+        "agentDir": "/root/.openclaw/agents/specialized-risk-assessor/agent"
+      },
+      {
+        "id": "specialized-salesforce-architect",
+        "name": "specialized-salesforce-architect",
+        "workspace": "/root/.openclaw/agency-agents/specialized-salesforce-architect",
+        "agentDir": "/root/.openclaw/agents/specialized-salesforce-architect/agent"
+      },
+      {
+        "id": "specialized-workflow-architect",
+        "name": "specialized-workflow-architect",
+        "workspace": "/root/.openclaw/agency-agents/specialized-workflow-architect",
+        "agentDir": "/root/.openclaw/agents/specialized-workflow-architect/agent"
+      },
+      {
+        "id": "study-abroad-advisor",
+        "name": "study-abroad-advisor",
+        "workspace": "/root/.openclaw/agency-agents/study-abroad-advisor",
+        "agentDir": "/root/.openclaw/agents/study-abroad-advisor/agent"
+      },
+      {
+        "id": "supply-chain-inventory-forecaster",
+        "name": "supply-chain-inventory-forecaster",
+        "workspace": "/root/.openclaw/agency-agents/supply-chain-inventory-forecaster",
+        "agentDir": "/root/.openclaw/agents/supply-chain-inventory-forecaster/agent"
+      },
+      {
+        "id": "supply-chain-route-optimizer",
+        "name": "supply-chain-route-optimizer",
+        "workspace": "/root/.openclaw/agency-agents/supply-chain-route-optimizer",
+        "agentDir": "/root/.openclaw/agents/supply-chain-route-optimizer/agent"
+      },
+      {
+        "id": "supply-chain-vendor-evaluator",
+        "name": "supply-chain-vendor-evaluator",
+        "workspace": "/root/.openclaw/agency-agents/supply-chain-vendor-evaluator",
+        "agentDir": "/root/.openclaw/agents/supply-chain-vendor-evaluator/agent"
+      },
+      {
+        "id": "support-analytics-reporter",
+        "name": "support-analytics-reporter",
+        "workspace": "/root/.openclaw/agency-agents/support-analytics-reporter",
+        "agentDir": "/root/.openclaw/agents/support-analytics-reporter/agent"
+      },
+      {
+        "id": "support-executive-summary-generator",
+        "name": "support-executive-summary-generator",
+        "workspace": "/root/.openclaw/agency-agents/support-executive-summary-generator",
+        "agentDir": "/root/.openclaw/agents/support-executive-summary-generator/agent"
+      },
+      {
+        "id": "support-finance-tracker",
+        "name": "support-finance-tracker",
+        "workspace": "/root/.openclaw/agency-agents/support-finance-tracker",
+        "agentDir": "/root/.openclaw/agents/support-finance-tracker/agent"
+      },
+      {
+        "id": "support-infrastructure-maintainer",
+        "name": "support-infrastructure-maintainer",
+        "workspace": "/root/.openclaw/agency-agents/support-infrastructure-maintainer",
+        "agentDir": "/root/.openclaw/agents/support-infrastructure-maintainer/agent"
+      },
+      {
+        "id": "support-legal-compliance-checker",
+        "name": "support-legal-compliance-checker",
+        "workspace": "/root/.openclaw/agency-agents/support-legal-compliance-checker",
+        "agentDir": "/root/.openclaw/agents/support-legal-compliance-checker/agent"
+      },
+      {
+        "id": "support-recruitment-specialist",
+        "name": "support-recruitment-specialist",
+        "workspace": "/root/.openclaw/agency-agents/support-recruitment-specialist",
+        "agentDir": "/root/.openclaw/agents/support-recruitment-specialist/agent"
+      },
+      {
+        "id": "support-supply-chain-strategist",
+        "name": "support-supply-chain-strategist",
+        "workspace": "/root/.openclaw/agency-agents/support-supply-chain-strategist",
+        "agentDir": "/root/.openclaw/agents/support-supply-chain-strategist/agent"
+      },
+      {
+        "id": "support-support-responder",
+        "name": "support-support-responder",
+        "workspace": "/root/.openclaw/agency-agents/support-support-responder",
+        "agentDir": "/root/.openclaw/agents/support-support-responder/agent"
+      },
+      {
+        "id": "technical-artist",
+        "name": "technical-artist",
+        "workspace": "/root/.openclaw/agency-agents/technical-artist",
+        "agentDir": "/root/.openclaw/agents/technical-artist/agent"
+      },
+      {
+        "id": "terminal-integration-specialist",
+        "name": "terminal-integration-specialist",
+        "workspace": "/root/.openclaw/agency-agents/terminal-integration-specialist",
+        "agentDir": "/root/.openclaw/agents/terminal-integration-specialist/agent"
+      },
+      {
+        "id": "testing-accessibility-auditor",
+        "name": "testing-accessibility-auditor",
+        "workspace": "/root/.openclaw/agency-agents/testing-accessibility-auditor",
+        "agentDir": "/root/.openclaw/agents/testing-accessibility-auditor/agent"
+      },
+      {
+        "id": "testing-api-tester",
+        "name": "testing-api-tester",
+        "workspace": "/root/.openclaw/agency-agents/testing-api-tester",
+        "agentDir": "/root/.openclaw/agents/testing-api-tester/agent"
+      },
+      {
+        "id": "testing-embedded-qa-engineer",
+        "name": "testing-embedded-qa-engineer",
+        "workspace": "/root/.openclaw/agency-agents/testing-embedded-qa-engineer",
+        "agentDir": "/root/.openclaw/agents/testing-embedded-qa-engineer/agent"
+      },
+      {
+        "id": "testing-evidence-collector",
+        "name": "testing-evidence-collector",
+        "workspace": "/root/.openclaw/agency-agents/testing-evidence-collector",
+        "agentDir": "/root/.openclaw/agents/testing-evidence-collector/agent"
+      },
+      {
+        "id": "testing-performance-benchmarker",
+        "name": "testing-performance-benchmarker",
+        "workspace": "/root/.openclaw/agency-agents/testing-performance-benchmarker",
+        "agentDir": "/root/.openclaw/agents/testing-performance-benchmarker/agent"
+      },
+      {
+        "id": "testing-reality-checker",
+        "name": "testing-reality-checker",
+        "workspace": "/root/.openclaw/agency-agents/testing-reality-checker",
+        "agentDir": "/root/.openclaw/agents/testing-reality-checker/agent"
+      },
+      {
+        "id": "testing-test-results-analyzer",
+        "name": "testing-test-results-analyzer",
+        "workspace": "/root/.openclaw/agency-agents/testing-test-results-analyzer",
+        "agentDir": "/root/.openclaw/agents/testing-test-results-analyzer/agent"
+      },
+      {
+        "id": "testing-tool-evaluator",
+        "name": "testing-tool-evaluator",
+        "workspace": "/root/.openclaw/agency-agents/testing-tool-evaluator",
+        "agentDir": "/root/.openclaw/agents/testing-tool-evaluator/agent"
+      },
+      {
+        "id": "testing-workflow-optimizer",
+        "name": "testing-workflow-optimizer",
+        "workspace": "/root/.openclaw/agency-agents/testing-workflow-optimizer",
+        "agentDir": "/root/.openclaw/agents/testing-workflow-optimizer/agent"
+      },
+      {
+        "id": "unity-architect",
+        "name": "unity-architect",
+        "workspace": "/root/.openclaw/agency-agents/unity-architect",
+        "agentDir": "/root/.openclaw/agents/unity-architect/agent"
+      },
+      {
+        "id": "unity-editor-tool-developer",
+        "name": "unity-editor-tool-developer",
+        "workspace": "/root/.openclaw/agency-agents/unity-editor-tool-developer",
+        "agentDir": "/root/.openclaw/agents/unity-editor-tool-developer/agent"
+      },
+      {
+        "id": "unity-multiplayer-engineer",
+        "name": "unity-multiplayer-engineer",
+        "workspace": "/root/.openclaw/agency-agents/unity-multiplayer-engineer",
+        "agentDir": "/root/.openclaw/agents/unity-multiplayer-engineer/agent"
+      },
+      {
+        "id": "unity-shader-graph-artist",
+        "name": "unity-shader-graph-artist",
+        "workspace": "/root/.openclaw/agency-agents/unity-shader-graph-artist",
+        "agentDir": "/root/.openclaw/agents/unity-shader-graph-artist/agent"
+      },
+      {
+        "id": "unreal-multiplayer-architect",
+        "name": "unreal-multiplayer-architect",
+        "workspace": "/root/.openclaw/agency-agents/unreal-multiplayer-architect",
+        "agentDir": "/root/.openclaw/agents/unreal-multiplayer-architect/agent"
+      },
+      {
+        "id": "unreal-systems-engineer",
+        "name": "unreal-systems-engineer",
+        "workspace": "/root/.openclaw/agency-agents/unreal-systems-engineer",
+        "agentDir": "/root/.openclaw/agents/unreal-systems-engineer/agent"
+      },
+      {
+        "id": "unreal-technical-artist",
+        "name": "unreal-technical-artist",
+        "workspace": "/root/.openclaw/agency-agents/unreal-technical-artist",
+        "agentDir": "/root/.openclaw/agents/unreal-technical-artist/agent"
+      },
+      {
+        "id": "unreal-world-builder",
+        "name": "unreal-world-builder",
+        "workspace": "/root/.openclaw/agency-agents/unreal-world-builder",
+        "agentDir": "/root/.openclaw/agents/unreal-world-builder/agent"
+      },
+      {
+        "id": "visionos-spatial-engineer",
+        "name": "visionos-spatial-engineer",
+        "workspace": "/root/.openclaw/agency-agents/visionos-spatial-engineer",
+        "agentDir": "/root/.openclaw/agents/visionos-spatial-engineer/agent"
+      },
+      {
+        "id": "xr-cockpit-interaction-specialist",
+        "name": "xr-cockpit-interaction-specialist",
+        "workspace": "/root/.openclaw/agency-agents/xr-cockpit-interaction-specialist",
+        "agentDir": "/root/.openclaw/agents/xr-cockpit-interaction-specialist/agent"
+      },
+      {
+        "id": "xr-immersive-developer",
+        "name": "xr-immersive-developer",
+        "workspace": "/root/.openclaw/agency-agents/xr-immersive-developer",
+        "agentDir": "/root/.openclaw/agents/xr-immersive-developer/agent"
+      },
+      {
+        "id": "xr-interface-architect",
+        "name": "xr-interface-architect",
+        "workspace": "/root/.openclaw/agency-agents/xr-interface-architect",
+        "agentDir": "/root/.openclaw/agents/xr-interface-architect/agent"
+      },
+      {
+        "id": "zk-steward",
+        "name": "zk-steward",
+        "workspace": "/root/.openclaw/agency-agents/zk-steward",
+        "agentDir": "/root/.openclaw/agents/zk-steward/agent"
+      }
+    ]
+  },
+  "tools": {
+    "exec": {
+      "host": "gateway",
+      "security": "full"
+    },
+    "alsoAllow": [
+      "wecom_mcp"
+    ]
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "main",
+    "identityLinks": {
+      "feishu": [
+        "ou_2f0e901d82bc02051953a0365d7ca19e"
+      ]
+    }
+  },
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "command-logger": {
+          "enabled": true
+        },
+        "session-memory": {
+          "enabled": true
+        },
+        "bootstrap-extra-files": {
+          "enabled": true
+        },
+        "boot-md": {
+          "enabled": true
+        },
+        "bot-mention-dispatcher": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "channels": {
+    "defaults": {
+      "heartbeat": {
+        "showOk": false,
+        "showAlerts": true,
+        "useIndicator": true
+      }
+    },
+    "feishu": {
+      "enabled": true,
+      "dmPolicy": "open",
+      "groupPolicy": "mention",
+      "groupAllowFrom": [
+        "*"
+      ],
+      "accounts": {
+        "huatuo": {
+          "name": "华佗",
+          "dmPolicy": "open",
+          "groupPolicy": "mention",
+          "groupAllowFrom": [
+            "*"
+          ],
+          "appId": "cli_a95e02ab53b81bd1",
+          "appSecret": "***REDACTED***"
+        },
+        "chenlin": {
+          "name": "陈琳",
+          "dmPolicy": "open",
+          "groupPolicy": "mention",
+          "groupAllowFrom": [
+            "*"
+          ],
+          "appId": "cli_a95e7165507b1bdb",
+          "appSecret": "***REDACTED***"
+        },
+        "xunyu": {
+          "name": "荀彧",
+          "dmPolicy": "open",
+          "groupPolicy": "mention",
+          "groupAllowFrom": [
+            "*"
+          ],
+          "appId": "cli_a95fab57e7b8dcb2",
+          "appSecret": "***REDACTED***"
+        },
+        "zhugeliang": {
+          "name": "诸葛亮",
+          "dmPolicy": "open",
+          "groupPolicy": "mention",
+          "groupAllowFrom": [
+            "*"
+          ],
+          "appId": "cli_a95e736346269bcd",
+          "appSecret": "***REDACTED***"
+        },
+        "guanyu": {
+          "name": "关羽",
+          "dmPolicy": "open",
+          "groupPolicy": "mention",
+          "groupAllowFrom": [
+            "*"
+          ],
+          "appId": "cli_a95fa00402f85cb2",
+          "appSecret": "***REDACTED***"
+        },
+        "liubei": {
+          "name": "刘备",
+          "dmPolicy": "open",
+          "groupPolicy": "mention",
+          "groupAllowFrom": [
+            "*"
+          ],
+          "appId": "cli_a95fa1507538dccf",
+          "appSecret": "***REDACTED***"
+        },
+        "zhaoyun": {
+          "name": "赵云",
+          "dmPolicy": "open",
+          "groupPolicy": "mention",
+          "groupAllowFrom": [
+            "*"
+          ],
+          "appId": "cli_a95fa3cbf5f89cd5",
+          "appSecret": "***REDACTED***"
+        },
+        "zhangfei": {
+          "name": "张飞",
+          "dmPolicy": "open",
+          "groupPolicy": "mention",
+          "groupAllowFrom": [
+            "*"
+          ],
+          "appId": "cli_a95fa1c297f85cdd",
+          "appSecret": "***REDACTED***"
+        }
+      }
+    }
+  },
+  "bindings": [
+    {
+      "agentId": "zhugeliang",
+      "match": {
+        "channel": "feishu",
+        "accountId": "zhugeliang"
+      }
+    },
+    {
+      "agentId": "guanyu",
+      "match": {
+        "channel": "feishu",
+        "accountId": "guanyu"
+      }
+    },
+    {
+      "agentId": "zhaoyun",
+      "match": {
+        "channel": "feishu",
+        "accountId": "zhaoyun"
+      }
+    },
+    {
+      "agentId": "xunyu",
+      "match": {
+        "channel": "feishu",
+        "accountId": "xunyu"
+      }
+    },
+    {
+      "agentId": "zhangfei",
+      "match": {
+        "channel": "feishu",
+        "accountId": "zhangfei"
+      }
+    },
+    {
+      "agentId": "huatuo",
+      "match": {
+        "channel": "feishu",
+        "accountId": "huatuo"
+      }
+    },
+    {
+      "agentId": "chenlin",
+      "match": {
+        "channel": "feishu",
+        "accountId": "chenlin"
+      }
+    },
+    {
+      "agentId": "liubei",
+      "match": {
+        "channel": "feishu",
+        "accountId": "liubei"
+      }
+    }
+  ],
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "lan",
+    "controlUi": {
+      "allowedOrigins": [
+        "https://47.116.196.11:38001",
+        "http://localhost:*",
+        "http://127.0.0.1:*",
+        "http://192.168.*:*",
+        "*"
+      ],
+      "allowInsecureAuth": true,
+      "dangerouslyDisableDeviceAuth": true
+    },
+    "auth": {
+      "mode": "token",
+      "token": "8a58072c11eb30076792fd13245252e08827bd1c692a8722"
+    },
+    "trustedProxies": [
+      "127.0.0.1",
+      "0.0.0.0/0"
+    ],
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
+      ]
+    }
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
+    }
+  },
+  "plugins": {
+    "allow": [
+      "openclaw-qqbot",
+      "feishu",
+      "memory-lancedb-pro",
+      "qqbot",
+      "browser",
+      "minimax",
+      "wecom-openclaw-plugin",
+      "bot-mention-dispatcher"
+    ],
+    "slots": {
+      "memory": "memory-lancedb-pro"
+    },
+    "entries": {
+      "openclaw-qqbot": {
+        "enabled": true
+      },
+      "feishu": {
+        "enabled": true
+      },
+      "memory-lancedb-pro": {
+        "enabled": true,
+        "config": {
+          "embedding": {
+            "provider": "openai-compatible",
+            "apiKey": "jina_31069b35d4644a15977a5286693ba85aLqy_zj1LIlPg7A3IfpbngsEtz_F_",
+            "model": "jina-embeddings-v2-base-en",
+            "baseURL": "https://api.jina.ai/v1",
+            "dimensions": 768,
+            "taskQuery": "retrieval.query",
+            "taskPassage": "retrieval.passage"
+          },
+          "autoCapture": true,
+          "autoRecall": true,
+          "smartExtraction": true,
+          "sessionStrategy": "systemSessionMemory",
+          "retrieval": {
+            "mode": "hybrid",
+            "rerank": "cross-encoder",
+            "rerankApiKey": "jina_31069b35d4644a15977a5286693ba85aLqy_zj1LIlPg7A3IfpbngsEtz_F_",
+            "rerankModel": "jina-reranker-v2-base-multilingual",
+            "rerankProvider": "jina"
+          }
+        }
+      },
+      "qqbot": {
+        "enabled": true
+      },
+      "browser": {
+        "enabled": true
+      },
+      "minimax": {
+        "enabled": true
+      },
+      "wecom-openclaw-plugin": {
+        "enabled": true
+      },
+      "bot-mention-dispatcher": {
+        "enabled": true
+      }
+    },
+    "installs": {
+      "openclaw-qqbot": {
+        "source": "npm",
+        "spec": "@tencent-connect/openclaw-qqbot@latest",
+        "installPath": "/root/.openclaw/extensions/openclaw-qqbot",
+        "version": "1.6.5",
+        "resolvedName": "@tencent-connect/openclaw-qqbot",
+        "resolvedVersion": "1.6.5",
+        "resolvedSpec": "@tencent-connect/openclaw-qqbot@1.6.5",
+        "integrity": "sha512-791d8Jgq8VJMeK5NOmIqnXX+nZJpr49Eu5wBvtak9a2TBQukN3WQMqvwoHtZLwJkBocls664PHj/hNhVmBb7Mg==",
+        "shasum": "22ccc6173a88ea3ba9c91caa65738ecd1b694162",
+        "resolvedAt": "2026-03-26T10:32:57.021Z",
+        "installedAt": "2026-03-26T10:33:36.003Z"
+      },
+      "memory-lancedb-pro": {
+        "source": "npm",
+        "spec": "memory-lancedb-pro@beta",
+        "installPath": "/root/.openclaw/extensions/memory-lancedb-pro",
+        "version": "1.1.0-beta.9",
+        "resolvedName": "memory-lancedb-pro",
+        "resolvedVersion": "1.1.0-beta.9",
+        "resolvedSpec": "memory-lancedb-pro@1.1.0-beta.9",
+        "integrity": "sha512-Q1Ah6M/mNBHLyoFJBWWpn2EEwMa1YIJhlPIL4TPPEwvAbWnPtGTc19fJbdKDdT4rJs9DVC+2yy8p0anipHp+ag==",
+        "shasum": "7eb90e4a3fd72167558b0a5e50db3100552054c2",
+        "resolvedAt": "2026-03-26T10:34:36.527Z",
+        "installedAt": "2026-03-26T10:34:51.755Z"
+      },
+      "qqbot": {
+        "source": "npm",
+        "spec": "qqbot@latest",
+        "installPath": "/root/.openclaw/extensions/qqbot",
+        "version": "1.6.5",
+        "resolvedName": "qqbot",
+        "resolvedVersion": "1.6.5",
+        "resolvedSpec": "qqbot@1.6.5",
+        "integrity": "sha512-791d8Jgq8VJMeK5NOmIqnXX+nZJpr49Eu5wBvtak9a2TBQukN3WQMqvwoHtZLwJkBocls664PHj/hNhVmBb7Mg==",
+        "shasum": "22ccc6173a88ea3ba9c91caa65738ecd1b694162",
+        "resolvedAt": "2026-03-26T10:32:57.021Z",
+        "installedAt": "2026-03-26T10:33:36.003Z"
+      },
+      "browser": {
+        "source": "npm",
+        "spec": "browser@latest",
+        "installPath": "/root/.openclaw/extensions/browser",
+        "version": "1.0.0",
+        "resolvedName": "browser",
+        "resolvedVersion": "1.0.0",
+        "resolvedSpec": "browser@1.0.0"
+      },
+      "minimax": {
+        "source": "npm",
+        "spec": "minimax@latest",
+        "installPath": "/root/.openclaw/extensions/minimax",
+        "version": "1.0.0",
+        "resolvedName": "minimax",
+        "resolvedVersion": "1.0.0",
+        "resolvedSpec": "minimax@1.0.0"
+      },
+      "wecom-openclaw-plugin": {
+        "source": "npm",
+        "spec": "@wecom/wecom-openclaw-plugin@latest",
+        "installPath": "/root/.openclaw/extensions/wecom-openclaw-plugin",
+        "version": "2026.4.2",
+        "resolvedName": "@wecom/wecom-openclaw-plugin",
+        "resolvedVersion": "2026.4.2",
+        "resolvedSpec": "@wecom/wecom-openclaw-plugin@2026.4.2",
+        "integrity": "sha512-kwRO1RuZIXcKhw/m1YYK/FFnjiC0k9MHLgyImnp1InXKnxYRcV1fd+R/2wez+2K7r/g6brDIzPXSCYm9Oh8m8A==",
+        "shasum": "61cc78fb209973c4f975bb9b880c50ca7a883e2c",
+        "resolvedAt": "2026-04-03T01:43:27.605Z",
+        "installedAt": "2026-04-03T01:43:44.707Z"
+      }
+    }
+  },
+  "mcp": {
+    "servers": {
+      "git": {
+        "command": "mcp-server-git",
+        "env": {
+          "PROJECT_PATH": "/root/.openclaw"
+        },
+        "args": []
+      },
+      "git-push": {
+        "command": "git-mcp"
+      }
+    }
+  }
+}

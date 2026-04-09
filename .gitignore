@@ -1,0 +1,30 @@
+# Secrets
+*.pem
+*.key
+.env
+*secret*
+*token*
+
+# Node modules
+node_modules/
+
+# Session data
+sessions/
+*.jsonl
+
+# Logs
+logs/
+*.log
+
+# Large files
+*.zip
+*.tar.gz
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

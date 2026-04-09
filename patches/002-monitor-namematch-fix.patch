@@ -1,0 +1,13 @@
+--- a/dist/monitor-CcQ_3z5A.js
++++ b/dist/monitor-CcQ_3z5A.js
+@@ -166,8 +166,10 @@
+ function checkBotMentioned(event, botOpenId, botName) {
+ 	if (!botOpenId) return false;
+ 	if ((event.message.content ?? "").includes("@_all")) return true;
+ 	const mentions = event.message.mentions ?? [];
+ 	if (mentions.length > 0) return mentions.some((mention) => {
+ 		if (mention.id.open_id === botOpenId) return true;
++		if (botName && mention.name === botName) return true;
+ 		return false;
+ 	});
+ 	if (event.message.message_type === "post") return parsePostContent(event.message.content).mentionedOpenIds.some((id) => id === botOpenId);

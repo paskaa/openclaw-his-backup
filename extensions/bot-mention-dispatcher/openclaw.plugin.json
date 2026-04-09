@@ -1,0 +1,19 @@
+{
+  "id": "bot-mention-dispatcher",
+  "name": "Bot Mention Dispatcher",
+  "version": "1.0.0",
+  "description": "Dispatch mentions between bot agents when a bot sends a message with @mentions",
+  "main": "index.js",
+  "author": "OpenClaw",
+  "license": "MIT",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "enabled": {
+        "type": "boolean",
+        "default": true
+      }
+    }
+  }
+}
