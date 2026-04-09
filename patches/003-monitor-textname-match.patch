@@ -1,0 +1,21 @@
+--- a/dist/monitor-CcQ_3z5A.js
++++ b/dist/monitor-CcQ_3z5A.js
+@@ -173,6 +173,18 @@
+ 	if (mentions.length > 0) return mentions.some((mention) => {
+ 		if (mention.id.open_id === botOpenId) return true;
+ 		if (botName && mention.name === botName) return true;
+ 		return false;
+ 	});
+ 	if (event.message.message_type === "post") return parsePostContent(event.message.content).mentionedOpenIds.some((id) => id === botOpenId);
++	// Check if bot name appears in message content (without @mention)
++	if (botName) {
++		const content = event.message.content ?? "";
++		let text = content;
++		try {
++			const parsed = JSON.parse(content);
++			if (parsed.text) text = parsed.text;
++		} catch {}
++		if (text.includes(botName)) return true;
++	}
+ 	return false;
+ }
